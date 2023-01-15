@@ -47,7 +47,7 @@ export const publicMint = async (mintAmount) => {
       status: 'To be able to mint, you need to connect your wallet'
     }
   }
-}
+
 
   const nonce = await web3.eth.getTransactionCount(
     window.ethereum.selectedAddress,
@@ -90,6 +90,7 @@ export const publicMint = async (mintAmount) => {
     }
   }
 }
+
 
 //Set up whitelisted sale mint
 
