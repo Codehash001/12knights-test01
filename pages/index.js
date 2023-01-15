@@ -117,7 +117,7 @@ useEffect(() => {
   return ( 
 
  
-    <div className="min-h-screen h-full w-full overflow-hidden flex flex-col items-center justify-center bg-brand-background ">
+    <div className="h-full w-full overflow-hidden flex flex-col items-center justify-center bg-brand-background md:p-[200px]">
         <div className="relative w-full h-full flex flex-col items-center justify-center py-2">
                 <div className="flex flex-col items-center justify-center h-full w-full px-2 md:px-10">
           <div className="z-1 md:max-w-3xl w-full bg-black/75 filter  py-4 rounded-md px-2 md:px-10 flex flex-col items-center
@@ -204,7 +204,7 @@ useEffect(() => {
                         : 'bg-gradient-to-br from-brand-01 to-brand-02 shadow-lg border border-transparent hover:shadow-black/60'
                     } font-Righteous mt-auto mb-0  w-full px-6 py-3 rounded-md text-2xl text-black  mx-4 tracking-wide uppercase border-violet-50`}
                     disabled={paused || isMinting}
-                    onClick= {isPublicSale? publicMintHandler : whitelistMintHandler}
+                    onClick= {isWhitelistedSale? whitelistMintHandler: publicMintHandler }
                   >
                     {isMinting ? 'Minting...' : 'Mint'}
                   </button>
