@@ -131,7 +131,7 @@ useEffect(() => {
                 : ''}
               
             </h3>
-                </div>
+                
 
                 {/* Increment and decrement */}
 
@@ -248,6 +248,7 @@ useEffect(() => {
                 <span className="break-all ...">{' '+ config.contractAddress}</span>
               </a>
               </h3>
+            </div>
             </div>
             </div>
             </div>
