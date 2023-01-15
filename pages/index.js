@@ -123,7 +123,7 @@ useEffect(() => {
           <div className="z-1 md:max-w-3xl w-full bg-black/75 filter  py-4 rounded-md px-2 md:px-10 flex flex-col items-center
             bg-gray-800 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-40 border-2 border-gray-100 backdrop-saturate-150">
             <h1 className="font-Righteous uppercase font-bold text-3xl md:text-4xl text-brand-02 bg-clip-text mt-3">
-            {paused ? 'Paused' : 'Public Sale'} </h1>
+            {paused ? 'Paused' : 'Minting is Live'} </h1>
 
             <h3 className="text-sm text-gray-100 tracking-widest">
             {walletAddress
@@ -204,7 +204,7 @@ useEffect(() => {
                         : 'bg-gradient-to-br from-brand-01 to-brand-02 shadow-lg border border-transparent hover:shadow-black/60'
                     } font-Righteous mt-auto mb-0  w-full px-6 py-3 rounded-md text-2xl text-black  mx-4 tracking-wide uppercase border-violet-50`}
                     disabled={paused || isMinting}
-                    onClick= {publicMintHandler}
+                    onClick= {isPublicSale? publicMintHandler : whitelistMintHandler}
                   >
                     {isMinting ? 'Minting...' : 'Mint'}
                   </button>
@@ -212,7 +212,7 @@ useEffect(() => {
                   <button
                     className='bg-gradient-to-br from-brand-01 to-brand-02 shadow-lg border border-transparent hover:shadow-black/60
                      font-Righteous mt-auto mb-0  w-full px-6 py-3 rounded-md text-2xl text-black  mx-4 tracking-wide uppercase border-violet-50'
-                     onClick={isPublicSale? publicMintHandler : whitelistMintHandler}
+                     onClick={connectWalletHandler}
                      >
                     Connect wallet
                   </button> )}
