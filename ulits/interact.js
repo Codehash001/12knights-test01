@@ -1,5 +1,8 @@
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3')
 import { config } from '../dapp.config'
+const { MerkleTree } = require('merkletreejs')
+const keccak256 = require('keccak256')
+const whitelist = require('../scripts/whitelist.js')
 
 const web3 = createAlchemyWeb3(process.env.NEXT_PUBLIC_ALCHEMY_RPC_URL)
 const contract = require('../artifacts/contracts/TwelveKnights.sol/TwelveKnights.json')
@@ -94,7 +97,7 @@ export const publicMint = async (mintAmount) => {
 
 //Set up whitelisted sale mint
 
-export const presaleMint = async (mintAmount) => {
+export const whitelistedMint = async (mintAmount) => {
   if (!window.ethereum.selectedAddress) {
     return {
       success: false,
