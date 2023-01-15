@@ -17,6 +17,7 @@ export default function Mint(){
   const [maxMintAmount, setMaxMintAmount] = useState(0)
   const [paused, setPaused] = useState(false)
   const [isPublicSale, setIsPublicSale] = useState(false)
+  const [isWhitelistedSale, setIsWhitelistedSale] = useState(false)
   
 
   const [status, setStatus] = useState(null)
@@ -34,9 +35,9 @@ export default function Mint(){
       const isPublicSale = await isPublicSaleState()
       setIsPublicSale(isPublicSale)
 
-      setMaxMintAmount(
-        isPublicSale ? config.maxMintAmount : '0'
-      )
+      setIsWhitelistedSale(isWhitelistedSaleState())
+
+      setMaxMintAmount(config.maxMintAmount)
       
       
     }
@@ -90,6 +91,19 @@ useEffect(() => {
     setIsMinting(true)
 
     const { success, status } = await publicMint(mintAmount)
+
+    setStatus({
+      success,
+      message: status
+    })
+
+    setIsMinting(false)
+  }
+
+  const whitelistMintHandler = async () => {
+    setIsMinting(true)
+
+    const { success, status } = await whitelistedMint(mintAmount)
 
     setStatus({
       success,
@@ -164,9 +178,6 @@ useEffect(() => {
                     </svg>
                   </button> 
                 </div>  
-                <p className="text-sm text-gray-100 tracking-widest mt-5">
-                  Max Mint Amount Per Wallet: {paused ? '0' : config.maxMintAmount}
-                </p>
 
                 <div className="border-t border-b py-4 mt-9 w-full">
                   <div className="w-full text-xl font-Righteous flex items-center justify-between text-yellow-300">
@@ -201,7 +212,7 @@ useEffect(() => {
                   <button
                     className='bg-gradient-to-br from-brand-01 to-brand-02 shadow-lg border border-transparent hover:shadow-black/60
                      font-Righteous mt-auto mb-0  w-full px-6 py-3 rounded-md text-2xl text-black  mx-4 tracking-wide uppercase border-violet-50'
-                     onClick={connectWalletHandler}
+                     onClick={isPublicSale? publicMintHandler : whitelistMintHandler}
                      >
                     Connect wallet
                   </button> )}

@@ -5,7 +5,8 @@ const config = {
   description: 'test minting Dapp',
   contractAddress: '0x0e1039cA53C3471737B1ee7E9D6DF06f5f2D6034',
   publicSalePrice:0.0001,
-  whitelistSalePrice:1.5
+  whitelistSalePrice:1.5,
+  maxMintAmount:10
 }
 
 const onboardOptions = {
