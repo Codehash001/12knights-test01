@@ -35,7 +35,7 @@ export default function Mint(){
       const isPublicSale = await isPublicSaleState()
       setIsPublicSale(isPublicSale)
 
-      setIsWhitelistedSale(isWhitelistedSaleState())
+      setIsWhitelistedSale(await isWhitelistedSaleState())
 
       setMaxMintAmount(config.maxMintAmount)
       
